@@ -11,11 +11,14 @@ namespace Net.Chdk.Validators.Camera
             if (camera == null)
                 throw new ArgumentNullException(nameof(camera));
 
+#if METADATA
             Validate(camera.Version);
+#endif
             Validate(camera.Base);
             Validate(camera.Canon);
         }
 
+#if METADATA
         private static void Validate(Version version)
         {
             if (version == null)
@@ -24,6 +27,7 @@ namespace Net.Chdk.Validators.Camera
             if (version.Major < 1 || version.Minor < 0)
                 throw new ValidationException("Invalid version");
         }
+#endif
 
         private static void Validate(BaseInfo @base)
         {
