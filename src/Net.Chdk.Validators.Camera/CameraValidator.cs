@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations;
 namespace Net.Chdk.Validators.Camera
 {
     [Obsolete]
-    sealed class CameraValidator : IValidator<CameraInfo>
+    sealed class CameraValidator : Validator<CameraInfo>
     {
-        public void Validate(CameraInfo camera, string basePath)
+        protected override void DoValidate(CameraInfo camera, string basePath)
         {
             if (camera == null)
                 throw new ArgumentNullException(nameof(camera));
@@ -18,17 +18,6 @@ namespace Net.Chdk.Validators.Camera
             Validate(camera.Base);
             Validate(camera.Canon);
         }
-
-#if METADATA
-        private static void Validate(Version version)
-        {
-            if (version == null)
-                throw new ValidationException("Null version");
-
-            if (version.Major < 1 || version.Minor < 0)
-                throw new ValidationException("Invalid version");
-        }
-#endif
 
         private static void Validate(BaseInfo @base)
         {
