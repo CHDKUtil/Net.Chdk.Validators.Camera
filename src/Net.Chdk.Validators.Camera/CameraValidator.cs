@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Net.Chdk.Validators.Camera
 {
+    [Obsolete]
     sealed class CameraValidator : IValidator<CameraInfo>
     {
         public void Validate(CameraInfo camera, string basePath)
