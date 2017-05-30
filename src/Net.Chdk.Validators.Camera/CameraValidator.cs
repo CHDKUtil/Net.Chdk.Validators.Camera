@@ -7,7 +7,7 @@ namespace Net.Chdk.Validators.Camera
     [Obsolete]
     sealed class CameraValidator : Validator<CameraInfo>
     {
-        protected override void DoValidate(CameraInfo camera, string basePath)
+        protected override void DoValidate(CameraInfo camera, string basePath, IProgress<double> progress)
         {
             if (camera == null)
                 throw new ArgumentNullException(nameof(camera));
