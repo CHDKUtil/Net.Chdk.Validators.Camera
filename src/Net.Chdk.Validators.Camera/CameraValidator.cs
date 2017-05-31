@@ -1,13 +1,14 @@
 ﻿using Net.Chdk.Model.Camera;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Threading;
 
 namespace Net.Chdk.Validators.Camera
 {
     [Obsolete]
     sealed class CameraValidator : Validator<CameraInfo>
     {
-        protected override void DoValidate(CameraInfo camera, string basePath, IProgress<double> progress)
+        protected override void DoValidate(CameraInfo camera, string basePath, IProgress<double> progress, CancellationToken token)
         {
             if (camera == null)
                 throw new ArgumentNullException(nameof(camera));
