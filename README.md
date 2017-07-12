@@ -1,3 +1,3 @@
 # Net.Chdk.Validators.Camera
 
-OBSOLETE
+[OBSOLETE] CHIMP camera validators
